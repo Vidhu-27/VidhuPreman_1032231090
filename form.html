@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Form Validation</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f2f2f2;
+      color: #111111;
+      padding: 40px;
+    }
+    .card {
+      max-width: 420px;
+      margin: auto;
+      background: #ffffff;
+      padding: 28px;
+      border-radius: 12px;
+      border: 1px solid #d9d9d9;
+    }
+    h1 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #333333;
+      margin-top: 14px;
+      display: block;
+    }
+    input {
+      width: 100%;
+      margin-top: 6px;
+      padding: 10px 12px;
+      font-size: 14px;
+      border: 1px solid #d9d9d9;
+      border-radius: 8px;
+      outline: none;
+    }
+    input:focus {
+      border-color: #6b6b6b;
+    }
+    .error {
+      font-size: 12px;
+      color: #8b0000;
+      margin-top: 4px;
+      min-height: 14px;
+    }
+    .gender-group {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+    .gender-group label {
+      margin-top: 0;
+      font-weight: 400;
+      color: #111111;
+    }
+    .gender-group input {
+      width: auto;
+      margin: 0 6px 0 0;
+    }
+    .checkbox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: #111111;
+    }
+    .checkbox input {
+      width: auto;
+      margin: 0;
+    }
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 11px;
+      font-size: 14px;
+      font-weight: 600;
+      background: #111111;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2b2b2b;
+    }
+    .entries {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid #d9d9d9;
+    }
+    .entries h2 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .entries p {
+      font-size: 13px;
+      color: #666666;
+      margin: 0 0 8px 0;
+    }
+    .entries ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .entries li {
+      padding: 8px 10px;
+      border: 1px solid #d9d9d9;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      background: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Register</h1>
+    <form id="registrationForm" novalidate>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Full name" required />
+      <div class="error" id="nameError"></div>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="name@example.com" required />
+      <div class="error" id="emailError"></div>
+
+      <label for="mobile">Mobile Number</label>
+      <input type="tel" id="mobile" name="mobile" placeholder="10-digit number" required />
+      <div class="error" id="mobileError"></div>
+
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" placeholder="Enter your age" required />
+      <div class="error" id="ageError"></div>
+
+      <label id="genderLabel">Gender</label>
+      <div class="gender-group" role="radiogroup" aria-labelledby="genderLabel">
+        <label><input type="radio" name="gender" value="Male" /> Male</label>
+        <label><input type="radio" name="gender" value="Female" /> Female</label>
+        <label><input type="radio" name="gender" value="Other" /> Other</label>
+      </div>
+      <div class="error" id="genderError"></div>
+
+      <div class="checkbox">
+        <input type="checkbox" id="terms" name="terms" />
+        <span>I agree to the Terms & Conditions</span>
+      </div>
+      <div class="error" id="termsError"></div>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div class="entries" aria-live="polite">
+      <h2>Recent Entries</h2>
+      <p class="empty" id="entriesEmpty">No entries yet.</p>
+      <ul id="entriesList"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
